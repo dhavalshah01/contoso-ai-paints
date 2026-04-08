@@ -1,5 +1,10 @@
 # Contoso PaintCo AI Search - AI-Powered Product Search Agent with Azure AI 
 
+![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)
+![Azure Functions](https://img.shields.io/badge/Azure%20Functions-v4-0062AD?logo=azurefunctions&logoColor=white)
+![Azure OpenAI](https://img.shields.io/badge/Azure%20OpenAI-GPT--4.1-00A67E?logo=openai&logoColor=white)
+![Azure AI Search](https://img.shields.io/badge/Azure%20AI%20Search-Indexer%20%2B%20Skillsets-0078D4?logo=microsoftazure&logoColor=white)
+![License](https://img.shields.io/badge/License-Portfolio%20Project-yellow)
 
 An end-to-end **AI-powered document intelligence pipeline** that automatically extracts structured product data from unstructured PDF technical data sheets using Azure AI Search, Azure Functions, and Azure OpenAI (GPT-4.1).
 
