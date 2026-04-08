@@ -1,6 +1,9 @@
-# Contoso PaintCo AI Search
+# Contoso PaintCo AI Search "Build an AI-Powered Product Search Agent with Azure AI — From Zero to RAG in 6 Videos"
+
 
 An end-to-end **AI-powered document intelligence pipeline** that automatically extracts structured product data from unstructured PDF technical data sheets using Azure AI Search, Azure Functions, and Azure OpenAI (GPT-4.1).
+Learn how to build a complete Retrieval-Augmented Generation (RAG) agent using Azure AI services. We take 10 paint product PDF data sheets, upload them to Azure, extract structured data with GPT-4.1, index everything in Azure AI Search, and connect it to a chat agent — all in under 60 minutes of video.
+Technologies: Azure Functions (.NET 8), Azure Blob Storage, Azure OpenAI (GPT-4.1), Azure AI Search, Azure AI Foundry
 
 ![Architecture](Architecture/Contoso-AI-Paint.jpeg)
 
@@ -12,7 +15,7 @@ An end-to-end **AI-powered document intelligence pipeline** that automatically e
 - **Document Intelligence** — PDF text extraction, unstructured-to-structured data transformation
 - **Cloud Architecture** — serverless design, event-driven pipelines, Azure service integration
 - **C# / .NET 8** — async/await, HTTP clients, JSON serialization, dependency injection
-- 
+
 ## The Problem
 
 Paint manufacturers produce hundreds of product technical data sheets (TDS) as PDFs. These documents contain critical information — SKUs, VOC values, coverage rates, dry times, safety data — buried in unstructured text. Manually extracting this data for searchable catalogs is slow, error-prone, and doesn't scale.
@@ -29,6 +32,55 @@ This project builds an **automated AI enrichment pipeline** that:
 4. **Indexes** all extracted fields into a rich, searchable index with filtering, faceting, and sorting
 
 The result is a fully searchable product catalog where users can query by finish type, filter by VOC compliance, sort by coverage, and find products using natural language — all sourced automatically from raw PDFs.
+
+## Sample Output
+
+A raw PDF like `Contoso_PaintCo_Product_01_CTSO-PAINT-EXT-SAT-1G-DB.pdf` containing pages of unstructured text is automatically transformed into structured data:
+
+```json
+{
+  "sku": "CTSO-PAINT-EXT-SAT-1G-DB",
+  "upc": "012345678901",
+  "productName": "Contoso WeatherShield Exterior Satin",
+  "brand": "Contoso PaintCo",
+  "finish": "Exterior",
+  "sheen": "Satin",
+  "base": "Deep Base",
+  "color": "Deep Base (tintable)",
+  "intendedUse": "Exterior wood, siding, trim, and masonry surfaces",
+  "vocValue": 48.0,
+  "vocUnit": "g/L",
+  "coverageMin": 350,
+  "coverageMax": 400,
+  "coverageUnit": "sq ft/gal",
+  "dryTimeTouchMinutes": 60,
+  "dryTimeRecoatMinutes": 240,
+  "dryTimeCureDays": 30,
+  "recommendedCoats": 2,
+  "cleanup": "Soap and water",
+  "warrantyYears": 25,
+  "warrantyType": "Limited Lifetime",
+  "resinType": "100% Acrylic Latex",
+  "productSummary": "Premium exterior satin paint with advanced UV and moisture resistance...",
+  "applicationPrep": "Clean surface of all dirt, mildew, and loose paint. Prime bare wood...",
+  "safetyHandling": "Use in well-ventilated areas. Avoid eye and skin contact...",
+  "disclaimer": "Colors may vary from samples. Test in an inconspicuous area first..."
+}
+```
+
+Every field becomes **searchable, filterable, and facetable** in the Azure AI Search index — enabling queries like *"show me all exterior paints with VOC under 50 g/L and at least 25-year warranty"*.
+
+## Business Impact
+
+| Manual Process | With This Pipeline |
+|---|---|
+| Hours per PDF to manually read and transcribe data | **Seconds** — fully automated extraction |
+| Error-prone copy/paste into spreadsheets | **Consistent, structured JSON** from GPT-4.1 |
+| No search capability across products | **Full-text search** with filtering and faceting |
+| Compliance checks require reading each TDS | **Instant VOC/safety filtering** across all products |
+| Scaling requires more headcount | **Serverless** — scales to zero, handles any volume |
+
+Downstream use cases enabled: RAG-based product Q&A, contractor self-service lookup, regulatory compliance filtering, automated product comparison, and catalog generation.
 
 ## Architecture
 
@@ -76,21 +128,18 @@ The custom skill extracts a comprehensive set of product attributes from each PD
 
 ## How It Works
 
-```
-PDF Upload → Blob Storage → AI Search Indexer triggers
-                                    ↓
-                        Document Cracking (text + metadata)
-                                    ↓
-                    ┌───────────────┴───────────────┐
-                    ↓                               ↓
-          Key Phrase Extraction          Custom Web API Skill
-          (built-in cognitive)           (Azure Function → GPT-4.1)
-                    ↓                               ↓
-                    └───────────────┬───────────────┘
-                                    ↓
-                        Search Index (52 fields)
-                                    ↓
-                    Full-text search, filtering, faceting
+```mermaid
+flowchart TD
+    A["📄 PDF Data Sheets"] -->|Upload| B["☁️ Azure Blob Storage"]
+    B -->|Triggers| C["🔍 Azure AI Search Indexer"]
+    C -->|Document Cracking| D["📝 Text + Metadata"]
+    D --> E["🔑 Key Phrase Extraction\n(Built-in Cognitive Skill)"]
+    D --> F["⚙️ Custom Web API Skill\n(Azure Function)"]
+    F -->|HTTP POST| G["🤖 Azure OpenAI GPT-4.1\n(Structured Extraction)"]
+    G -->|37 Fields JSON| F
+    E --> H["📊 Search Index\n(52 Fields)"]
+    F --> H
+    H --> I["🔎 Full-text Search\nFiltering & Faceting"]
 ```
 
 ## Key Technical Decisions
