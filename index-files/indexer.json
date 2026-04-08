@@ -1,0 +1,72 @@
+{
+  "name": "contoso-paints-indexer",
+  "description": "Indexer to process PDF files from blob storage and extract metadata",
+  "dataSourceName": "contoso-paints-blob-datasource",
+  "targetIndexName": "contoso-paints-index",
+  "skillsetName": "contoso-paints-skillset",
+  "schedule": null,
+  "parameters": {
+    "batchSize": 10,
+    "maxFailedItems": 5,
+    "maxFailedItemsPerBatch": 5,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "indexedFileNameExtensions": ".pdf",
+      "failOnUnsupportedContentType": false,
+      "failOnUnprocessableDocument": false
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "id",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": null
+      }
+    },
+    {
+      "sourceFieldName": "metadata_storage_name",
+      "targetFieldName": "metadata_storage_name"
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path"
+    },
+    {
+      "sourceFieldName": "metadata_storage_size",
+      "targetFieldName": "metadata_storage_size"
+    },
+    {
+      "sourceFieldName": "metadata_storage_last_modified",
+      "targetFieldName": "metadata_storage_last_modified"
+    },
+    {
+      "sourceFieldName": "metadata_content_type",
+      "targetFieldName": "metadata_content_type"
+    },
+    {
+      "sourceFieldName": "metadata_language",
+      "targetFieldName": "metadata_language"
+    },
+    {
+      "sourceFieldName": "metadata_title",
+      "targetFieldName": "title"
+    },
+    {
+      "sourceFieldName": "metadata_author",
+      "targetFieldName": "author"
+    },
+    {
+      "sourceFieldName": "metadata_creation_date",
+      "targetFieldName": "creationDate"
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/content/keyphrases",
+      "targetFieldName": "content_keywords"
+    }
+  ]
+}

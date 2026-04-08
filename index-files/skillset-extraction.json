@@ -1,0 +1,196 @@
+{
+  "name": "contoso-paints-skillset-enhanced",
+  "description": "Enhanced skillset with product data extraction via Azure Function + OpenAI",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "extract-keyphrases",
+      "description": "Extract key phrases from PDF content",
+      "context": "/document/content",
+      "defaultLanguageCode": "en",
+      "maxKeyPhraseCount": 25,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyphrases"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "extract-product-data",
+      "description": "Extract product data from PDF content using Azure Function + OpenAI",
+      "context": "/document",
+      "uri": "https://<YOUR_FUNCTION_APP>.azurewebsites.net/api/extractproductdata?code=<YOUR_FUNCTION_KEY>",
+      "httpMethod": "POST",
+      "timeout": "PT60S",
+      "batchSize": 1,
+      "degreeOfParallelism": 1,
+      "inputs": [
+        {
+          "name": "content",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sku",
+          "targetName": "extracted_sku"
+        },
+        {
+          "name": "upc",
+          "targetName": "extracted_upc"
+        },
+        {
+          "name": "productName",
+          "targetName": "extracted_productName"
+        },
+        {
+          "name": "brand",
+          "targetName": "extracted_brand"
+        },
+        {
+          "name": "finish",
+          "targetName": "extracted_finish"
+        },
+        {
+          "name": "sheen",
+          "targetName": "extracted_sheen"
+        },
+        {
+          "name": "base",
+          "targetName": "extracted_base"
+        },
+        {
+          "name": "color",
+          "targetName": "extracted_color"
+        },
+        {
+          "name": "intendedUse",
+          "targetName": "extracted_intendedUse"
+        },
+        {
+          "name": "vocValue",
+          "targetName": "extracted_vocValue"
+        },
+        {
+          "name": "vocUnit",
+          "targetName": "extracted_vocUnit"
+        },
+        {
+          "name": "coverageMin",
+          "targetName": "extracted_coverageMin"
+        },
+        {
+          "name": "coverageMax",
+          "targetName": "extracted_coverageMax"
+        },
+        {
+          "name": "coverageUnit",
+          "targetName": "extracted_coverageUnit"
+        },
+        {
+          "name": "recommendedCoats",
+          "targetName": "extracted_recommendedCoats"
+        },
+        {
+          "name": "cleanup",
+          "targetName": "extracted_cleanup"
+        },
+        {
+          "name": "warrantyYears",
+          "targetName": "extracted_warrantyYears"
+        },
+        {
+          "name": "warrantyType",
+          "targetName": "extracted_warrantyType"
+        },
+        {
+          "name": "resinType",
+          "targetName": "extracted_resinType"
+        },
+        {
+          "name": "dryTimeTouchMinutes",
+          "targetName": "extracted_dryTimeTouchMinutes"
+        },
+        {
+          "name": "dryTimeRecoatMinutes",
+          "targetName": "extracted_dryTimeRecoatMinutes"
+        },
+        {
+          "name": "dryTimeCureDays",
+          "targetName": "extracted_dryTimeCureDays"
+        },
+        {
+          "name": "solidsByVolume",
+          "targetName": "extracted_solidsByVolume"
+        },
+        {
+          "name": "solidsByWeight",
+          "targetName": "extracted_solidsByWeight"
+        },
+        {
+          "name": "viscosityMin",
+          "targetName": "extracted_viscosityMin"
+        },
+        {
+          "name": "viscosityMax",
+          "targetName": "extracted_viscosityMax"
+        },
+        {
+          "name": "viscosityUnit",
+          "targetName": "extracted_viscosityUnit"
+        },
+        {
+          "name": "recommendedDFT",
+          "targetName": "extracted_recommendedDFT"
+        },
+        {
+          "name": "recommendedWFT",
+          "targetName": "extracted_recommendedWFT"
+        },
+        {
+          "name": "filmThicknessUnit",
+          "targetName": "extracted_filmThicknessUnit"
+        },
+        {
+          "name": "storageTempMinF",
+          "targetName": "extracted_storageTempMinF"
+        },
+        {
+          "name": "storageTempMaxF",
+          "targetName": "extracted_storageTempMaxF"
+        },
+        {
+          "name": "shelfLifeMonths",
+          "targetName": "extracted_shelfLifeMonths"
+        },
+        {
+          "name": "productSummary",
+          "targetName": "extracted_productSummary"
+        },
+        {
+          "name": "applicationPrep",
+          "targetName": "extracted_applicationPrep"
+        },
+        {
+          "name": "safetyHandling",
+          "targetName": "extracted_safetyHandling"
+        },
+        {
+          "name": "disclaimer",
+          "targetName": "extracted_disclaimer"
+        }
+      ],
+      "httpHeaders": {}
+    }
+  ],
+  "cognitiveServices": null,
+  "knowledgeStore": null
+}

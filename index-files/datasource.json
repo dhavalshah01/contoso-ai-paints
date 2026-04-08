@@ -1,0 +1,17 @@
+{
+  "name": "contoso-paints-blob-datasource",
+  "description": "Blob storage data source for Contoso Paint product PDFs",
+  "type": "azureblob",
+  "credentials": {
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=contosopaintstorage;AccountKey=YOUR_STORAGE_ACCOUNT_KEY;EndpointSuffix=core.windows.net"
+  },
+  "container": {
+    "name": "documents",
+    "query": null
+  },
+  "dataChangeDetectionPolicy": {
+    "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
+    "highWaterMarkColumnName": "metadata_storage_last_modified"
+  },
+  "dataDeletionDetectionPolicy": null
+}

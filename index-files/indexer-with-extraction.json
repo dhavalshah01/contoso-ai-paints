@@ -1,0 +1,214 @@
+{
+  "name": "contoso-paints-indexer",
+  "description": "Indexer for processing PDF files from blob storage with product data extraction",
+  "dataSourceName": "contoso-paints-blob-datasource",
+  "targetIndexName": "contoso-paints-index",
+  "skillsetName": "contoso-paints-skillset-enhanced",
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "imageAction": "none"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_name",
+      "targetFieldName": "metadata_storage_name"
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path"
+    },
+    {
+      "sourceFieldName": "metadata_storage_size",
+      "targetFieldName": "metadata_storage_size"
+    },
+    {
+      "sourceFieldName": "metadata_storage_last_modified",
+      "targetFieldName": "metadata_storage_last_modified"
+    },
+    {
+      "sourceFieldName": "metadata_content_type",
+      "targetFieldName": "metadata_content_type"
+    },
+    {
+      "sourceFieldName": "metadata_language",
+      "targetFieldName": "metadata_language"
+    },
+    {
+      "sourceFieldName": "metadata_content_md_title",
+      "targetFieldName": "title"
+    },
+    {
+      "sourceFieldName": "metadata_content_md_author",
+      "targetFieldName": "author"
+    },
+    {
+      "sourceFieldName": "metadata_content_md_creationdate",
+      "targetFieldName": "creationDate"
+    },
+    {
+      "sourceFieldName": "content",
+      "targetFieldName": "content"
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/keyphrases",
+      "targetFieldName": "content_keywords"
+    },
+    {
+      "sourceFieldName": "/document/extracted_sku",
+      "targetFieldName": "sku"
+    },
+    {
+      "sourceFieldName": "/document/extracted_upc",
+      "targetFieldName": "upc"
+    },
+    {
+      "sourceFieldName": "/document/extracted_productName",
+      "targetFieldName": "productName"
+    },
+    {
+      "sourceFieldName": "/document/extracted_brand",
+      "targetFieldName": "brand"
+    },
+    {
+      "sourceFieldName": "/document/extracted_finish",
+      "targetFieldName": "finish"
+    },
+    {
+      "sourceFieldName": "/document/extracted_sheen",
+      "targetFieldName": "sheen"
+    },
+    {
+      "sourceFieldName": "/document/extracted_base",
+      "targetFieldName": "base"
+    },
+    {
+      "sourceFieldName": "/document/extracted_color",
+      "targetFieldName": "color"
+    },
+    {
+      "sourceFieldName": "/document/extracted_intendedUse",
+      "targetFieldName": "intendedUse"
+    },
+    {
+      "sourceFieldName": "/document/extracted_vocValue",
+      "targetFieldName": "vocValue"
+    },
+    {
+      "sourceFieldName": "/document/extracted_vocUnit",
+      "targetFieldName": "vocUnit"
+    },
+    {
+      "sourceFieldName": "/document/extracted_coverageMin",
+      "targetFieldName": "coverageMin"
+    },
+    {
+      "sourceFieldName": "/document/extracted_coverageMax",
+      "targetFieldName": "coverageMax"
+    },
+    {
+      "sourceFieldName": "/document/extracted_coverageUnit",
+      "targetFieldName": "coverageUnit"
+    },
+    {
+      "sourceFieldName": "/document/extracted_recommendedCoats",
+      "targetFieldName": "recommendedCoats"
+    },
+    {
+      "sourceFieldName": "/document/extracted_cleanup",
+      "targetFieldName": "cleanup"
+    },
+    {
+      "sourceFieldName": "/document/extracted_warrantyYears",
+      "targetFieldName": "warrantyYears"
+    },
+    {
+      "sourceFieldName": "/document/extracted_warrantyType",
+      "targetFieldName": "warrantyType"
+    },
+    {
+      "sourceFieldName": "/document/extracted_resinType",
+      "targetFieldName": "resinType"
+    },
+    {
+      "sourceFieldName": "/document/extracted_dryTimeTouchMinutes",
+      "targetFieldName": "dryTimeTouchMinutes"
+    },
+    {
+      "sourceFieldName": "/document/extracted_dryTimeRecoatMinutes",
+      "targetFieldName": "dryTimeRecoatMinutes"
+    },
+    {
+      "sourceFieldName": "/document/extracted_dryTimeCureDays",
+      "targetFieldName": "dryTimeCureDays"
+    },
+    {
+      "sourceFieldName": "/document/extracted_solidsByVolume",
+      "targetFieldName": "solidsByVolume"
+    },
+    {
+      "sourceFieldName": "/document/extracted_solidsByWeight",
+      "targetFieldName": "solidsByWeight"
+    },
+    {
+      "sourceFieldName": "/document/extracted_viscosityMin",
+      "targetFieldName": "viscosityMin"
+    },
+    {
+      "sourceFieldName": "/document/extracted_viscosityMax",
+      "targetFieldName": "viscosityMax"
+    },
+    {
+      "sourceFieldName": "/document/extracted_viscosityUnit",
+      "targetFieldName": "viscosityUnit"
+    },
+    {
+      "sourceFieldName": "/document/extracted_recommendedDFT",
+      "targetFieldName": "recommendedDFT"
+    },
+    {
+      "sourceFieldName": "/document/extracted_recommendedWFT",
+      "targetFieldName": "recommendedWFT"
+    },
+    {
+      "sourceFieldName": "/document/extracted_filmThicknessUnit",
+      "targetFieldName": "filmThicknessUnit"
+    },
+    {
+      "sourceFieldName": "/document/extracted_storageTempMinF",
+      "targetFieldName": "storageTempMinF"
+    },
+    {
+      "sourceFieldName": "/document/extracted_storageTempMaxF",
+      "targetFieldName": "storageTempMaxF"
+    },
+    {
+      "sourceFieldName": "/document/extracted_shelfLifeMonths",
+      "targetFieldName": "shelfLifeMonths"
+    },
+    {
+      "sourceFieldName": "/document/extracted_productSummary",
+      "targetFieldName": "productSummary"
+    },
+    {
+      "sourceFieldName": "/document/extracted_applicationPrep",
+      "targetFieldName": "applicationPrep"
+    },
+    {
+      "sourceFieldName": "/document/extracted_safetyHandling",
+      "targetFieldName": "safetyHandling"
+    },
+    {
+      "sourceFieldName": "/document/extracted_disclaimer",
+      "targetFieldName": "disclaimer"
+    }
+  ]
+}
