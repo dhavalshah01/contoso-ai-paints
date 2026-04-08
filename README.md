@@ -1,8 +1,10 @@
-# Contoso PaintCo AI Search "Build an AI-Powered Product Search Agent with Azure AI — From Zero to RAG in 6 Videos"
+# Contoso PaintCo AI Search - AI-Powered Product Search Agent with Azure AI 
 
 
 An end-to-end **AI-powered document intelligence pipeline** that automatically extracts structured product data from unstructured PDF technical data sheets using Azure AI Search, Azure Functions, and Azure OpenAI (GPT-4.1).
+
 Learn how to build a complete Retrieval-Augmented Generation (RAG) agent using Azure AI services. We take 10 paint product PDF data sheets, upload them to Azure, extract structured data with GPT-4.1, index everything in Azure AI Search, and connect it to a chat agent — all in under 60 minutes of video.
+
 Technologies: Azure Functions (.NET 8), Azure Blob Storage, Azure OpenAI (GPT-4.1), Azure AI Search, Azure AI Foundry
 
 ![Architecture](Architecture/Contoso-AI-Paint.jpeg)
