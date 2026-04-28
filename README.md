@@ -14,6 +14,19 @@ Technologies: Azure Functions (.NET 8), Azure Blob Storage, Azure OpenAI (GPT-4.
 
 ![Architecture](Architecture/Contoso-AI-Paint.jpeg)
 
+## 🎥 Video Series
+
+**Build an AI-Powered Product Search Agent with Azure AI — From Zero to RAG in 6 Videos**
+
+| # | Video | Link |
+|---|-------|------|
+| 1 | Project Setup & Azure Functions | [Watch on YouTube](https://www.youtube.com/watch?v=Cok8n3AzucA) |
+| 2 | Azure Blob Storage & PDF Upload | Coming soon |
+| 3 | Azure OpenAI — Deploy GPT-4.1 | Coming soon |
+| 4 | Azure AI Search — Index, Skillset & Indexer | Coming soon |
+| 5 | Custom AI Extraction — Deploy the GPT-4.1 Function | Coming soon |
+| 6 | RAG Agent in Azure AI Foundry — Live Demo & Finale | Coming soon |
+
 ## Skills Demonstrated
 
 - **Azure AI Search** — indexers, skillsets, custom skills, field mappings, index schema design
