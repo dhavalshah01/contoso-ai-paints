@@ -21,11 +21,11 @@ Technologies: Azure Functions (.NET 8), Azure Blob Storage, Azure OpenAI (GPT-4.
 | # | Video | Link |
 |---|-------|------|
 | 1 | Project Setup & Azure Functions | [Watch on YouTube](https://www.youtube.com/watch?v=Cok8n3AzucA) |
-| 2 | Azure Blob Storage & PDF Upload | Coming soon |
-| 3 | Azure OpenAI — Deploy GPT-4.1 | Coming soon |
-| 4 | Azure AI Search — Index, Skillset & Indexer | Coming soon |
-| 5 | Custom AI Extraction — Deploy the GPT-4.1 Function | Coming soon |
-| 6 | RAG Agent in Azure AI Foundry — Live Demo & Finale | Coming soon |
+| 2 | Azure Blob Storage & PDF Upload | [Watch on YouTube](https://youtu.be/ZVIzQQEr2RY) |
+| 3 | Azure OpenAI — Deploy GPT-4.1 | [Watch on YouTube](https://youtu.be/HoDNXV5arjk) |
+| 4 | Azure AI Search — Index, Skillset & Indexer | [Watch on YouTube](https://youtu.be/9_94-0T_fh8) |
+| 5 | Custom AI Extraction — Deploy the GPT-4.1 Function | [Watch on YouTube](https://youtu.be/aFAwXZY8CMU) |
+| 6 | RAG Agent in Azure AI Foundry — Live Demo & Finale | [Watch on YouTube](https://youtu.be/DusO4Z-XZOQ) |
 
 ## Skills Demonstrated
 
